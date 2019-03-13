@@ -5,6 +5,10 @@ import lejos.hardware.Button;
 import lejos.hardware.Sound;
 import lejos.hardware.motor.UnregulatedMotor;
 import lejos.hardware.port.MotorPort;
+import lejos.hardware.port.SensorPort;
+import lejos.hardware.sensor.EV3UltrasonicSensor;
+import lejos.robotics.SampleProvider;
+import lejos.robotics.filter.AbstractFilter;
 import lejos.utility.Delay;
 
 public class Main {
@@ -43,6 +47,9 @@ public class Main {
 				UnregulatedMotor baglås = new UnregulatedMotor(MotorPort.A);
 				UnregulatedMotor skovl = new UnregulatedMotor(MotorPort.D);
 				
+				EV3UltrasonicSensor usensor = new EV3UltrasonicSensor(SensorPort.S3);
+				Ultrasonic ultrasonic = new Ultrasonic(usensor.getMode("Distance"));
+				
 				
 				hjul1.setPower(100);
 				hjul2.setPower(100);
@@ -53,18 +60,57 @@ public class Main {
 				hjul2.backward();
 				skovl.backward();
 				
-				Delay.msDelay(3000);
+				boolean driving = true;
+				int counter = 0;
 				
-				hjul1.stop();
-				hjul2.stop();
-				skovl.stop();
-				
-				baglås.setPower(100);
-				baglås.backward();
-				Delay.msDelay(1500);
-				
-				baglås.forward();
-				Delay.msDelay(1000);
+				while(driving) {
+					
+					float distance = ultrasonic.distance();
+					
+					if(distance < 0.2) {
+						hjul1.stop();
+						hjul2.stop();
+						counter++;
+						
+						hjul1.backward();
+						Delay.msDelay(350);
+						hjul1.stop();
+						
+						if(counter == 4) {
+							driving = false;
+							baglås.setPower(100);
+							baglås.backward();
+							Delay.msDelay(1500);
+							
+							baglås.forward();
+							Delay.msDelay(1000);
+						}
+						else {
+							hjul1.backward();
+							hjul2.backward();
+						}
+						
+						
+					}
+					
+				}
 
 	}
+	
+}
+
+class Ultrasonic extends AbstractFilter{
+
+	float[] sample;
+	
+	public Ultrasonic(SampleProvider source) {
+		super(source);
+		sample = new float[sampleSize];
+	}
+	
+	public float distance() {
+		super.fetchSample(sample, 0);
+		return sample[0];
+	}
+	
 }

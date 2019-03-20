@@ -1,3 +1,4 @@
+
 import boofcv.abst.feature.detect.interest.ConfigGeneralDetector;
 import boofcv.abst.feature.tracker.PointTrack;
 import boofcv.abst.feature.tracker.PointTracker;
@@ -10,7 +11,6 @@ import boofcv.io.image.ConvertBufferedImage;
 import boofcv.io.webcamcapture.UtilWebcamCapture;
 import boofcv.struct.image.GrayF32;
 import com.github.sarxos.webcam.Webcam;
-
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.List;

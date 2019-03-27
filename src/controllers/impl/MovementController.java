@@ -13,12 +13,11 @@ import lejos.utility.Delay;
 
 public class MovementController implements IMovementController{
 	
-	
-	UnregulatedMotor wheel1, wheel2, trunk, collector;
-	EV3UltrasonicSensor usensor;
-	Ultrasonic ultrasonic;
-	EV3GyroSensor gsensor;
-	Gyro gyro;
+	private UnregulatedMotor wheel1, wheel2, trunk, collector;
+	private EV3UltrasonicSensor usensor;
+	private Ultrasonic ultrasonic;
+	private EV3GyroSensor gsensor;
+	private Gyro gyro;
 	
 
 	public MovementController(){

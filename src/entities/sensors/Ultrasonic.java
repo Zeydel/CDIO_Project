@@ -4,14 +4,14 @@ import lejos.robotics.filter.AbstractFilter;
 
 public class Ultrasonic extends AbstractFilter{
 
-	float[] sample;
+	private float[] sample;
 	
 	public Ultrasonic(SampleProvider source) {
 		super(source);
 		sample = new float[sampleSize];
 	}
 	
-	public float distance() {
+	public float getDistance() {
 		super.fetchSample(sample, 0);
 		return sample[0];
 	}

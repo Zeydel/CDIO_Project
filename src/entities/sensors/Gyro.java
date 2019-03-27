@@ -5,8 +5,8 @@ import lejos.robotics.filter.AbstractFilter;
 
 public class Gyro extends AbstractFilter{
 
-	float[] sample;
-	int offset;
+	private float[] sample;
+	private int offset;
 	
 	public Gyro(SampleProvider source) {
 		super(source);

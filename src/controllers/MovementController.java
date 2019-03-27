@@ -13,11 +13,11 @@ import lejos.utility.Delay;
 public class MovementController {
 	
 	
-	UnregulatedMotor wheel1, wheel2, trunk, collector;
-	EV3UltrasonicSensor usensor;
-	Ultrasonic ultrasonic;
-	EV3GyroSensor gsensor;
-	Gyro gyro;
+	private UnregulatedMotor wheel1, wheel2, trunk, collector;
+	private EV3UltrasonicSensor usensor;
+	private Ultrasonic ultrasonic;
+	private EV3GyroSensor gsensor;
+	private Gyro gyro;
 	
 
 	public MovementController(){
@@ -103,7 +103,7 @@ public class MovementController {
 		Delay.msDelay(1000);
 	}
 	
-	public void turnRight(Boolean continueDriving) {
+	public void turnRight(boolean continueDriving) {
 		wheel2.stop();
 		wheel1.stop();
 		
@@ -119,7 +119,7 @@ public class MovementController {
 		}
 	}
 	
-	public void turnLeft(Boolean continueDriving) {
+	public void turnLeft(boolean continueDriving) {
 		wheel2.stop();
 		wheel1.stop();
 		

@@ -1,3 +1,4 @@
+package entities.sensors;
 import lejos.robotics.SampleProvider;
 import lejos.robotics.filter.AbstractFilter;
 

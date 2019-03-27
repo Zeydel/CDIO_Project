@@ -1,5 +1,6 @@
-package controllers;
+package controllers.impl;
 
+import controllers.interfaces.IMovementController;
 import entities.sensors.Gyro;
 import entities.sensors.Ultrasonic;
 import lejos.*;
@@ -10,7 +11,7 @@ import lejos.hardware.sensor.EV3GyroSensor;
 import lejos.hardware.sensor.EV3UltrasonicSensor;
 import lejos.utility.Delay;
 
-public class MovementController {
+public class MovementController implements IMovementController{
 	
 	
 	UnregulatedMotor wheel1, wheel2, trunk, collector;
@@ -103,7 +104,7 @@ public class MovementController {
 		Delay.msDelay(1000);
 	}
 	
-	public void turnRight(Boolean continueDriving) {
+	public void turnRight(boolean continueDriving) {
 		wheel2.stop();
 		wheel1.stop();
 		
@@ -119,7 +120,7 @@ public class MovementController {
 		}
 	}
 	
-	public void turnLeft(Boolean continueDriving) {
+	public void turnLeft(boolean continueDriving) {
 		wheel2.stop();
 		wheel1.stop();
 		

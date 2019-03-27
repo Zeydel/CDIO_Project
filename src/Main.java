@@ -10,7 +10,7 @@ import boofcv.gui.image.ShowImages;
 import boofcv.io.image.ConvertBufferedImage;
 import boofcv.io.webcamcapture.UtilWebcamCapture;
 import boofcv.struct.image.GrayF32;
-import controllers.MovementController;
+import controllers.impl.MovementController;
 import lejos.hardware.Sound;
 import lejos.utility.Delay;
 
